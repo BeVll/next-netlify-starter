@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+	<script src="init.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Bevlin</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="focus_div" onclick="CategoryClosePhone()" id="focus_div" style="display: none;"></div>
+	<div class="category_list" id="category_list_main">
+		<!-- <button type="button" name="button" class="catalog_btn">
+			<img src="images/category.png" alt="" class="category_img">
+			<span class="calatog_name">Каталог</span>
+		</button> -->
+		<div class="logo_div_catalog">
+			<a href="#" class="to_main_page">
+				<img src="images/logo.png" alt="" class="logo_mobile">
+				<span class="logo_name_mobile">BEVLIN</span>
+			</a>
+			<button type="button" onclick="CategoryClosePhone()" name="button" class="close_category_btn"><img src="images/Close.png" class="close_category_img"></button>
+		</div>
+		<div class="categories_list" id="list">
+
+		</div>
+	</div>
+	<div class="MainBar">
+		<button type="button" onclick="CategoryShowPhone()" name="button" class="show_categories"><img src="images/category.png" alt="" class="category_menu"></button>
+     <img src="images/logo.png" alt="" class="logo">
+     <span class="logo_name">BEVLIN</span>
+		<input type="text" name="" value="" class="search" placeholder="Пошук товарів">
+		<button type="button" name="button" class="search_btn">Знайти</button>
+		<button class="MainBar_btn"><img src="images/profile.png" alt="" class="profile"></button>
+		<button class="MainBar_btn2"><img src="images/cart.png" alt="" class="profile"></button>
+  </div>
+
+	<script type="text/javascript">
+		var mysql = require('mysql');
+
+		var con = mysql.createConnection({
+		  host: "localhost",
+		  user: "id19426820_bevl2",
+		  password: "<FZFtwuY_?7|f]zq"
+		});
+
+		con.connect(function(err) {
+		  if (err) throw err;
+		  console.log("Connected!");
+		});
+		function CategoryShowPhone(){
+			if(document.getElementById('focus_div').style.display != "none"){
+				document.getElementById('focus_div').style.display = "none";
+					document.getElementById('category_list_main').style.transform = 'translateX(-120%)';
+			}
+			else{
+				document.getElementById('focus_div').style.display = "block";
+				for(var i = 0; i < 10; i++) {
+					const box = `<a href="#" class="lala">Категорія` + i + `</a>`;
+					document.getElementById("list").innerHTML += box;
+				}
+				document.getElementById('category_list_main').style.transform = 'translateX(0%)';
+			}
+		}
+		function CategoryClosePhone(){
+				document.getElementById('focus_div').style.display = "none";
+					document.getElementById('category_list_main').style.transform = 'translateX(-120%)';
+		}
+	</script>
+</body>
+</html>
